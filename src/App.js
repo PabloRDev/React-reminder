@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import data from "./data";
+import List from "./components/List";
+
+import "./App.scss";
 
 function App() {
+  const [meeting, setMeeting] = useState(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section className="container">
+        <h3 className="App-header">{meeting.length} meetings today</h3>
+        <List meeting={meeting} />
+        <button onClick={() => setMeeting([])}>Clear All</button>
+      </section>
+    </main>
   );
 }
 
